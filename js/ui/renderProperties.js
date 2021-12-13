@@ -6,9 +6,10 @@ export function renderArticles(render) {
 
     render.forEach(function (article){
         articlesContainer.innerHTML += `<div class="card">
-                                            <li><span> Title: ${article.title}</span></li>
-                                            <li><span> Summary: ${article.summary}</span></li>
-                                            <li><span> Author: ${article.author}</span></li>
+                                            <li>Title: ${article.title} </li>
+                                            <li>Summary: ${article.summary}</li>
+                                            <li>Author: ${article.author}</li>
+                                            <i class="far fa-heart"></i>
                                         </div>`;
     });
 };

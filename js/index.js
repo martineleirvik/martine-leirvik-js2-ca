@@ -22,3 +22,6 @@ const articlesUrl = baseUrl + "articles";
 
 
 })();
+
+const favButton = document.querySelectorAll(".card i");
+console.log(favButton);
