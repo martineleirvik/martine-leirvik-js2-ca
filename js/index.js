@@ -20,8 +20,4 @@ const articlesUrl = baseUrl + "articles";
         console.log(error);
     }
 
-
 })();
-
-const favButton = document.querySelectorAll(".card i");
-console.log(favButton);

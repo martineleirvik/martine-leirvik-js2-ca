@@ -16,7 +16,7 @@ export function searchArticle(result) {
                 return true;
             }
             else {
-                articlesContainer.innerHTML += `<p> There are no items under the price you typed.</p>`
+                articlesContainer.innerHTML += `<p> There are no articles with the name you typed.</p>`
             }
         });
 
