@@ -33,3 +33,25 @@ ul {
 .card i {
   cursor: pointer;
 }
+
+.message {
+  border: 1px solid grey;
+  color: grey;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.message.error {
+  border-color: red;
+  color: red;
+}
+
+.message.warning {
+  border-color: orange;
+  color: orange;
+}
+
+.message.success {
+  border-color: green;
+  color: green;
+}

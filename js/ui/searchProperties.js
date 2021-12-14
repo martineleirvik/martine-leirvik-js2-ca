@@ -15,9 +15,7 @@ export function searchArticle(result) {
             if (card.title.toLowerCase().includes(searchValue)) {
                 return true;
             }
-            else {
-                articlesContainer.innerHTML += `<p> There are no articles with the name you typed.</p>`
-            }
+            
         });
 
         renderArticles(filteredProp);
