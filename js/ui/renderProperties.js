@@ -37,7 +37,7 @@ export function renderArticles(render) {
         btn.addEventListener("click", handleClick);
     });
 
-    function handleClick() {
+    function handleClick(event) {
         console.log(event);
         event.target.classList.toggle("fa");
         event.target.classList.toggle("far");
