@@ -55,3 +55,14 @@ ul {
   border-color: green;
   color: green;
 }
+
+button {
+  padding: 10px;
+  border-radius: 8px;
+  float: right;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-color: rgb(99, 99, 99);
+  color: #fff;
+  cursor: pointer;
+}

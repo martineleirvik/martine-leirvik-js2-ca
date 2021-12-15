@@ -2,14 +2,16 @@ import { displayMessage} from "../components/displayMessage.js";
 import { getFav, savetoFavourites } from "../utils/localStorage.js";
 import messages from "./messages.js";
 
-
-
-export function renderArticles(render) {
+export function renderArticles(render, isFavourite = false) {
 
     const favourite = getFav();
 
+    if (isFavourite) {
+        render = favourite;
+    }
+
     if ( render.length === 0){
-        return displayMessage("warning", messages.noResults, "ul");
+        return displayMessage("warning", isFavourite ? messages.emptyFav : messages.noResults, "ul");
     }
 
     const articlesContainer = document.querySelector("ul");
@@ -21,15 +23,16 @@ export function renderArticles(render) {
             return parseInt(item.id) === article.id;
         });
 
+        const heartClass = articleIsInFav ? "fa" : "far";
+
         articlesContainer.innerHTML += `<div class="card">
                                             <li>Title: ${article.title}</li>
                                             <li>Summary: ${article.summary}</li>
                                             <li>Author: ${article.author}</li>
-                                            <i class="far fa-heart" data-id="${article.id}" data-title="${article.title}"></i>
+                                            <i class="${heartClass} fa-heart" data-id="${article.id}" data-title="${article.title}" data-summary="${article.summary}" data-author="${article.author}"></i>
                                         </div>`;
     });
 
-    
 
     const favoButton = document.querySelectorAll(".card i");
 
@@ -42,9 +45,7 @@ export function renderArticles(render) {
         event.target.classList.toggle("fa");
         event.target.classList.toggle("far");
 
-        const { id, title } = this.dataset;
-
-        console.log("title", title)
+        const { id, title, summary, author } = this.dataset;
 
         const favourite = getFav();
 
@@ -53,12 +54,15 @@ export function renderArticles(render) {
         });
 
         if (!articlesIsInFav) {
-            const addArticle = { id: id, title: title };
+            const addArticle = { id: id, title: title, summary: summary, author: author };
             favourite.push(addArticle);
             savetoFavourites(favourite);
         } else {
             const newFavList = favourite.filter((fav)=> fav.id !== id);
             savetoFavourites(newFavList);
+        }
+        if (isFavourite) {
+            renderArticles(null, true)
         }
     }
 };
