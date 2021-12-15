@@ -1,17 +1,19 @@
 import { renderArticles } from "./ui/renderProperties.js";
+import { displayMessage } from "./components/displayMessage.js"
+import messages from "./ui/messages.js"
 
 renderArticles(null, true);
 
 const clearBtn = document.querySelector("button");
-const articlesContainer = document.querySelector("ul");
 
 clearBtn.addEventListener("click", clearStorage); 
 
 function clearStorage () {
-    const clear = localStorage.clear();
 
-    if (clear) {
-        articlesContainer.innerHTML = "";
-    }
+    const articlesContainer = document.querySelector("ul");
 
-}
+    localStorage.clear();
+
+    articlesContainer.innerHTML = displayMessage("warning", messages.emptyFav, "ul");
+        
+};

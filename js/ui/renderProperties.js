@@ -66,4 +66,3 @@ export function renderArticles(render, isFavourite = false) {
         }
     }
 };
-
