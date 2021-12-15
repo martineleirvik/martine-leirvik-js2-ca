@@ -1,7 +1,8 @@
 import { displayMessage} from "../components/displayMessage.js";
-import messages from "./messages.js";
-import { makeFavourites } from "./favourites.js";
 import { getFav, savetoFavourites } from "../utils/localStorage.js";
+import messages from "./messages.js";
+
+
 
 export function renderArticles(render) {
 
@@ -12,10 +13,13 @@ export function renderArticles(render) {
     }
 
     const articlesContainer = document.querySelector("ul");
+
     articlesContainer.innerHTML = "";
 
-
     render.forEach(function (article){
+        const articleIsInFav = favourite.find(function (item) {
+            return parseInt(item.id) === article.id;
+        });
 
         articlesContainer.innerHTML += `<div class="card">
                                             <li>Title: ${article.title}</li>
@@ -28,14 +32,13 @@ export function renderArticles(render) {
     
 
     const favoButton = document.querySelectorAll(".card i");
-    // console.log(favoButton);
 
     favoButton.forEach((btn) => {
         btn.addEventListener("click", handleClick);
     });
 
     function handleClick() {
-        //console.log(event);
+        console.log(event);
         event.target.classList.toggle("fa");
         event.target.classList.toggle("far");
 
@@ -43,32 +46,20 @@ export function renderArticles(render) {
 
         console.log("title", title)
 
-        const favourite = renderArticles();
+        const favourite = getFav();
 
-        const articlesinFav = favourite.find(function (item){
+        const articlesIsInFav = favourite.find(function (item){
             return item.id === id;
         });
 
-        if (!articlesinFav) {
-            const article = { id: id, title: title };
-            favourite.push(article);
+        if (!articlesIsInFav) {
+            const addArticle = { id: id, title: title };
+            favourite.push(addArticle);
             savetoFavourites(favourite);
         } else {
             const newFavList = favourite.filter((fav)=> fav.id !== id);
             savetoFavourites(newFavList);
         }
-
-    
-
-    
     }
-
-
-
-
-
-
-
-
 };
 
