@@ -23,7 +23,7 @@ export function renderArticles(render, isFavourite = false) {
             return parseInt(item.id) === article.id;
         });
 
-        const heartClass = articleIsInFav ? "fa" : "far";
+        const heartClass = articleIsInFav ? "fas" : "far";
 
         articlesContainer.innerHTML += `<div class="card">
                                             <li>Title: ${article.title}</li>
@@ -42,7 +42,7 @@ export function renderArticles(render, isFavourite = false) {
 
     function handleClick(event) {
         console.log(event);
-        event.target.classList.toggle("fa");
+        event.target.classList.toggle("fas");
         event.target.classList.toggle("far");
 
         const { id, title, summary, author } = this.dataset;
