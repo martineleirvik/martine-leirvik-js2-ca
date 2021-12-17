@@ -15,7 +15,7 @@ function clearStorage () {
     
     localStorage.clear();
 
-    articlesContainer.innerHTML = `<div class="message warning">Favourites are empty</div>`;
-    // articlesContainer.innerHTML = displayMessage("warning", messages.emptyFav, "ul");
+    // articlesContainer.innerHTML = `<div class="message warning">Favourites are empty</div>`;
+    articlesContainer.innerHTML = displayMessage("warning", messages.emptyFav, "ul");
         
 };

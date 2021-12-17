@@ -20,7 +20,7 @@ export function renderArticles(render, isFavourite = false) {
 
     render.forEach(function (article){
         const articleIsInFav = favourite.find(function (item) {
-            return parseInt(item.id) === article.id;
+            return item.id == article.id;
         });
 
         const heartClass = articleIsInFav ? "fas" : "far";
