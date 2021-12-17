@@ -5,7 +5,7 @@ export function searchArticle(result) {
     const search = document.querySelector(".search");
     const articlesContainer = document.querySelector("ul");
 
-    search.onkeyup = function () {
+    search.onkeyup = function (event) {
 
         console.log(event)
 
