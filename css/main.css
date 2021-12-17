@@ -88,6 +88,10 @@ button {
   margin-right: 50px;
 }
 
+button:hover {
+  opacity: 0.6;
+}
+
 nav,
 h1,
 .search,
